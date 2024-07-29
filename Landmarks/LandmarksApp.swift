@@ -26,9 +26,15 @@ struct LandmarksApp: App {
         WKNotificationScene(controller: NotificationController.self, category: "LandmarkNear")
         #endif
         
-        #if os(macOS)
+        #if os(macOS) || os(watchOS)
         Settings {
             LandmarkSettings()
+        }
+        #endif
+        
+        #if os(visionOS)
+        ImmersiveSpace(id: "ImmersiveSpace") {
+            ImmersiveView()
         }
         #endif
     }
